@@ -1,12 +1,16 @@
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player
 {
     private String name;
     private int space = 0;
     private int money = 1500;
-    private String properties;
-    private String color;
+    private List<Property> properties = new ArrayList<>();
+    private Color color;
 
-    public Player(String n, String c)
+    public Player(String n, Color c)
     {
         name = n;
         color = c;
@@ -23,7 +27,7 @@ public class Player
     {
         return money;
     }
-    public String getProperty()
+    public List<Property> getProperties()
     {
         return properties;
     }
@@ -39,8 +43,12 @@ public class Player
     {
         money = m;
     }
-    public void setProperty(String p)
+    public void addProperty(Property p)
     {
-        properties = p;
+        properties.add(p);
+    }
+    public void setColor(Color c)
+    {
+    	this.color = c;
     }
 }

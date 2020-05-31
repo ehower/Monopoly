@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public class Neighborhoods
 {
 	//each neighborhood and the properties in them
@@ -15,12 +14,8 @@ public class Neighborhoods
 		//this method will ask the player what Color Neighborhood they would like to check the properties needed to have Monopoly over it
 		public String[] getCards(String color)
 		{
-			Scanner scan = new Scanner(System.in);
 			String[] defaultCase = {"wrong", "color"};
-
-			System.out.println("Enter a Color to check the properties in its Neighborhood:");
-			color = scan.nextLine();
-
+			
 			if(color.equalsIgnoreCase("Purple"))
 				return purpleNeighborhood;
 			else if(color.equalsIgnoreCase("Light Blue"))
