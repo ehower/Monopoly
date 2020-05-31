@@ -2,6 +2,8 @@ public class Player
 {
     private String name;
     private int space = 0;
+    private int money = 1500;
+    private String properties;
 
     public Player(String n)
     {
@@ -15,6 +17,14 @@ public class Player
     {
         return space;
     }
+    public int getMoney()
+    {
+        return money;
+    }
+    public String getProperty()
+    {
+        return properties;
+    }
     public void setName(String n)
     {
         name = n;
@@ -22,5 +32,13 @@ public class Player
     public void setSpace(int s)
     {
         space = s;
+    }
+    public void setMoney(int m)
+    {
+        money = s;
+    }
+    public void setProperty(int p)
+    {
+        properties = p;
     }
 }
