@@ -25,3 +25,4 @@ hs_err_pid*
 #Ethan's useless file paths
 *.classpath
 *.project
+/bin/
