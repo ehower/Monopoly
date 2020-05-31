@@ -1,10 +1,9 @@
-import java.util.ArrayList;
 public class Player
 {
     private String name;
     private int space = 0;
     private int money = 1500;
-    private ArrayList<String> properties;
+    private String properties;
 
     public Player(String n)
     {
@@ -14,7 +13,6 @@ public class Player
     {
         return name;
     }
-    
     public int getSpace()
     {
         return space;
@@ -23,7 +21,7 @@ public class Player
     {
         return money;
     }
-    public ArrayList<String> getProperty()
+    public String getProperty()
     {
         return properties;
     }
@@ -41,6 +39,6 @@ public class Player
     }
     public void setProperty(String p)
     {
-        properties.add(p);
+        properties = p;
     }
 }
