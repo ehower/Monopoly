@@ -9,6 +9,7 @@ public class Player
     private int money = 1500;
     private List<Property> properties = new ArrayList<>();
     private Color color;
+    private int jailFreeCards = 0;
 
     public Player(String n, Color c)
     {
@@ -54,5 +55,20 @@ public class Player
     public Color getColor()
     {
     	return color;
+    }
+    
+    public void addGetOutOfJailCard()
+    {
+    	jailFreeCards++;
+    }
+    public boolean getOutOfJail()
+    {
+    	if(jailFreeCards > 0)
+    	{
+    		jailFreeCards--;
+    		return true;
+    	}
+    	else
+    		return false;
     }
 }
