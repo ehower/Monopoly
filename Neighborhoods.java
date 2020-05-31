@@ -13,32 +13,32 @@ public class Neighborhoods
 
 
 		//this method will ask the player what Color Neighborhood they would like to check the properties needed to have Monopoly over it
-		public static String getCards()
+		public String[] getCards(String color)
 		{
 			Scanner scan = new Scanner(System.in);
-			String color;
+			String[] defaultCase = {"wrong", "color"};
 
 			System.out.println("Enter a Color to check the properties in its Neighborhood:");
 			color = scan.nextLine();
 
 			if(color.equalsIgnoreCase("Purple"))
-				return "To have Monopoly over the Purple Neighborhood, you must have these properties:/n" + purpleNeighborhood[0] + "/n" + purpleNeighborhood[1];
+				return purpleNeighborhood;
 			else if(color.equalsIgnoreCase("Light Blue"))
-				return "To have Monopoly over the Light Blue Neighborhood, you must have these properties:/n" + lightBlueNeighborhood[0] + "/n" + lightBlueNeighborhood[1] + "/n" + lightBlueNeighborhood[2];
+				return lightBlueNeighborhood;
 			else if(color.equalsIgnoreCase("Pink"))
-				return "To have Monopoly over the Pink Neighborhood, you must have these properties:/n" + pinkNeighborhood[0] + "/n" + pinkNeighborhood[1] + "/n" + pinkNeighborhood[2];
+				return pinkNeighborhood;
 			else if(color.equalsIgnoreCase("Orange"))
-				return "To have Monopoly over the Orange Neighborhood, you must have these properties:/n" + orangeNeighborhood[0] + "/n" + orangeNeighborhood[1] + "/n" + orangeNeighborhood[2];
+				return orangeNeighborhood;
 			else if(color.equalsIgnoreCase("Red"))
-				return "To have Monopoly over the Red Neighborhood, you must have these properties:/n" + redNeighborhood[0] + "/n" + redNeighborhood[1] + "/n" + redNeighborhood[2];
+				return redNeighborhood;
 			else if(color.equalsIgnoreCase("Yellow"))
-				return "To have Monopoly over the Yellow Neighborhood, you must have these properties:/n" + yellowNeighborhood[0] + "/n" + yellowNeighborhood[1] + "/n" + yellowNeighborhood[2];
+				return yellowNeighborhood;
 			else if(color.equalsIgnoreCase("Green"))
-				return "To have Monopoly over the Green Neighborhood, you must have these properties:/n" + greenNeighborhood[0] + "/n" + greenNeighborhood[1] + "/n" + greenNeighborhood[2];
+				return greenNeighborhood;
 			else if(color.equalsIgnoreCase("Blue"))
-				return "To have Monopoly over the Blue Neighborhood, you must have these properties:/n" + blueNeighborhood[0] + "/n" + blueNeighborhood[1];
+				return blueNeighborhood;
 			else
-				return "You did not enter a valid Neighborhood Color.";
+				return defaultCase;
 		}
 
 }
