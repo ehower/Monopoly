@@ -1,6 +1,11 @@
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.GraphicsConfiguration;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -16,7 +21,7 @@ public class MonopolyDriver extends JPanel
 		 
 		JFrame frame = new JFrame("Cedar Crest-Opoly",g);
 		Window w = new Window(frame);
-		w.WindowSetup();
+		
 		
 		BufferedImage board = ImageIO.read(new File("Images\\Board.png"));
 		
@@ -31,8 +36,7 @@ public class MonopolyDriver extends JPanel
 			 }
 	     };
 	     frame.add(pane);
+	     w.playerSetup();
+	     w.WindowSetup();
 	}
-	
-	
-	
 }
