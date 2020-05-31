@@ -13,6 +13,7 @@ public class MonopolyDriver extends JPanel
 
 	public static void main (String[] args) throws IOException
 	{
+		 
 		JFrame frame = new JFrame("Cedar Crest-Opoly",g);	
 		
 		BufferedImage board = ImageIO.read(new File("Images\\Board.png"));
@@ -20,11 +21,12 @@ public class MonopolyDriver extends JPanel
 		 JPanel pane = new JPanel() 
 		 {
 			 @Override
-	            protected void paintComponent(Graphics g) {
+	            protected void paintComponent(Graphics g) 
+			 {
 	                super.paintComponent(g);
 	                Image scaledImage = board.getScaledInstance(screenSize.width/2, screenSize.width/2, java.awt.Image.SCALE_SMOOTH);
 	                g.drawImage(scaledImage, 0, 0, null);
-	            }
+			 }
 	     };
 	     createJFrame(frame);
 	     frame.add(pane);
