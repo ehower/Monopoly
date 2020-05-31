@@ -1,12 +1,18 @@
+import java.awt.Image;
+
 public class CardPile
 {
 	private Card[] cards;
 	private int amountLeft;
 	
-	public CardPile(Card[] cards)
+	private Image coverImage;
+	
+	public CardPile(Card[] cards, Image coverImage)
 	{
 		this.cards = cards;
 		amountLeft = cards.length;
+		
+		this.coverImage = coverImage;
 	}
 	
 	public void shuffle()
@@ -32,5 +38,10 @@ public class CardPile
 			shuffle();
 		
 		return ret;
+	}
+	
+	public Image getCoverImage()
+	{
+		return coverImage;
 	}
 }
