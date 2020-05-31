@@ -15,6 +15,7 @@ public class MonopolyDriver extends JPanel
 	{
 		 
 		JFrame frame = new JFrame("Cedar Crest-Opoly",g);	
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		BufferedImage board = ImageIO.read(new File("Images\\Board.png"));
 		
