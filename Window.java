@@ -29,14 +29,15 @@ public class Window
 		int coord2 = screenSize.height/2;
 		
 		JTextField playerCount = new JTextField();
-		playerCount.setBounds(coord1, coord2, coord1 + 100, coord2 - 100);
+		playerCount.setBounds(coord1, coord2, 60, 30);
 		
 		JLabel label1 = new JLabel();
-		label1.setBounds(coord1 - 150, coord2, coord1 - 50, coord2 - 100);
+		label1.setBounds(coord1 - 300, coord2, 200,20);
 		label1.setText("How many players do you have?");
 		
 		JButton button1 = new JButton();
-		button1.setBounds(coord1 + 50, coord2, coord1 + 150, coord2 - 20);
+		button1.setBounds(coord1 + 50, coord2, 90,30);
+		button1.setText("Submit");
 		
 		frame.add(label1);
 		frame.add(button1);

@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class MonopolyDriver extends JPanel
 {
@@ -28,15 +29,16 @@ public class MonopolyDriver extends JPanel
 		 JPanel pane = new JPanel() 
 		 {
 			 @Override
-	            protected void paintComponent(Graphics g) 
+	         protected void paintComponent(Graphics g) 
 			 {
 	                super.paintComponent(g);
 	                Image scaledImage = board.getScaledInstance(screenSize.width/2, screenSize.width/2, java.awt.Image.SCALE_SMOOTH);
 	                g.drawImage(scaledImage, 0, 0, null);
 			 }
 	     };
-	     frame.add(pane);
-	     w.playerSetup();
-	     w.WindowSetup();
+	    
+	    frame.add(pane);
+	    w.playerSetup();
+	    w.WindowSetup();
 	}
 }
