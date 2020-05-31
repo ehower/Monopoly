@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public class Die
 {
 	//variables - dice1 = result of dice1, dice2 = result of dice2, rolledDoubles = dice values are equal, result = sum of dice values
