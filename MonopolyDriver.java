@@ -9,20 +9,21 @@ import javax.swing.JPanel;
 public class MonopolyDriver extends JPanel
 {
 	static GraphicsConfiguration g;
-	
+	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public static void main (String[] args) throws IOException
 	{
 		JFrame frame = new JFrame("Cedar Crest-Opoly",g);	
 		
-		BufferedImage image = ImageIO.read(new File("Images\\Board.png"));
+		BufferedImage board = ImageIO.read(new File("Images\\Board.png"));
 		
 		 JPanel pane = new JPanel() 
 		 {
 			 @Override
 	            protected void paintComponent(Graphics g) {
 	                super.paintComponent(g);
-	                g.drawImage(image, 0, 0, null);
+	                Image scaledImage = board.getScaledInstance(screenSize.width/2, screenSize.width/2, java.awt.Image.SCALE_SMOOTH);
+	                g.drawImage(scaledImage, 0, 0, null);
 	            }
 	     };
 	     createJFrame(frame);
@@ -31,7 +32,6 @@ public class MonopolyDriver extends JPanel
 	
 	public static void createJFrame(JFrame frame)
 	{
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setVisible(true);
 		frame.setSize(screenSize.width, screenSize.height);
 	}
