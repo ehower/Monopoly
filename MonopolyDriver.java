@@ -14,8 +14,9 @@ public class MonopolyDriver extends JPanel
 	public static void main (String[] args) throws IOException
 	{
 		 
-		JFrame frame = new JFrame("Cedar Crest-Opoly",g);	
-		
+		JFrame frame = new JFrame("Cedar Crest-Opoly",g);
+		Window w = new Window(frame);
+		w.WindowSetup();
 		
 		BufferedImage board = ImageIO.read(new File("Images\\Board.png"));
 		
@@ -29,16 +30,9 @@ public class MonopolyDriver extends JPanel
 	                g.drawImage(scaledImage, 0, 0, null);
 			 }
 	     };
-	     createJFrame(frame);
 	     frame.add(pane);
 	}
 	
-	public static void createJFrame(JFrame frame)
-	{
-		frame.setVisible(true);
-		frame.setSize(screenSize.width, screenSize.height);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
 	
 	
 }
