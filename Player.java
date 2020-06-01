@@ -53,7 +53,25 @@ public class Player
     	
     	if(canBuy)
     	{
-    		System.out.println("A BUY MENu HAS TO BE POPPED UP");
+    		switch(s)
+    		{
+    		case 0:
+    		case 2:
+    		case 4:
+    		case 7:
+    		case 10:
+    		case 17:
+    		case 20:
+    		case 22:
+    		case 30:
+    		case 33:
+    		case 36:
+    		case 38:
+    			ProcessingDriver.setDrawBuyMenu(false);
+    			break;
+			default:
+				ProcessingDriver.setDrawBuyMenu(true);
+    		}
     	}
     }
     public boolean owesSpace()
