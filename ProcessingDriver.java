@@ -14,6 +14,60 @@ public class ProcessingDriver extends PApplet
 	String playerName = "";
 	int count = 0;
 	
+	public int[] getCoordsForPoint(int index, int playerNo)
+	{
+		int addAmt = index % 10 == 0 ? 0 : 30;
+		
+		int[] coord;
+		
+		if(index < 10)
+		{
+			coord = new int[] { 620 - index * 55 - addAmt, 700 };
+		}
+		else if(index < 20)
+		{
+			coord = new int[] { 45, 660 - index * 55 + addAmt };
+		}
+		else if(index < 30)
+		{
+			coord = new int[] { 30 + index * 55 + addAmt, 60 };
+		}
+		else if(index < 40)
+		{
+			coord = new int[] { 635, 70 + index * 55 + addAmt};
+		}
+		else
+			coord = null;
+		
+		if(coord != null)
+		{
+			if(playerNo == 0)
+			{
+				coord[0] -= 15;
+				coord[1] -= 15;
+			}
+			else if(playerNo == 1)
+			{
+				coord[0] += 15;
+				coord[1] -= 15;
+			}
+			else if(playerNo == 2)
+			{
+				coord[0] += 15;
+				coord[1] += 15;
+			}
+			else if(playerNo == 3)
+			{
+				coord[0] -= 15;
+				coord[1] += 15;
+			}
+			
+			return coord;
+		}
+		else
+			return null;
+	}
+	
 	private static List<Player> players;
 	
 	public static void main (String[] args)
@@ -23,7 +77,7 @@ public class ProcessingDriver extends PApplet
 	
 	public void settings()
 	{
-		fullScreen();
+		size(1366,768);
 	}
 	
 	public void setup()
@@ -55,6 +109,33 @@ public class ProcessingDriver extends PApplet
 				text(typing, width-width/2 + 50, height - height/3);	
 			}	
 			break;
+			
+			case 2:
+			{
+				ellipseMode(CENTER);
+				
+				fill(players.get(0).getColor().getRGB());
+				ellipse(604,626,10,10);
+				
+				fill(players.get(1).getColor().getRGB());
+				ellipse(632,626,10,10);
+				
+				if(players.size() >= 3)
+				{
+				fill(players.get(2).getColor().getRGB());
+				ellipse(604,657,10,10);
+				}
+				
+				if(players.size() == 4)
+				{
+				fill(players.get(3).getColor().getRGB());
+				ellipse(632,657,10,10);
+				}
+			}
+			break;
+			
+			default:
+				System.out.println("If you are seeing this, Ethan did something very wrong.");
 		}
 	}
 	
@@ -113,7 +194,7 @@ public class ProcessingDriver extends PApplet
 			break;
 			
 			default:
-				System.out.println("If you are seeing this, Ethan did something very wrong.");
+				break;
 		}
 	}
 	
