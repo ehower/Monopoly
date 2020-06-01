@@ -11,16 +11,27 @@ public class ChanceCardsStack
 		Card[] cards = new Card[14];
 		
 		cards[0] = new CardPayMoney(img("Images/Chance/01.jpg"), 30);
-		cards[1] = new CardSetSpace(img("Images/Chance/02.jpg"), Monopoly.JAIL_SPACE, false, false);
+		cards[1] = new CardSetSpace(img("Images/Chance/02.jpg"), 10, false, false);
 		cards[2] = new Card(img("Images/Chance/03.jpg"))
 		{
 			@Override
 			public void affect(Player p)
 			{
-//				for(Player other : Monopoly.getPlayers())
-//				{
-//					// 20$ each
-//				}
+				for(Player other : ProcessingDriver.getPlayers())
+				{
+					if(!p.equals(other))
+					{
+						if(p.getMoney() >= 20)
+						{
+							other.setMoney(other.getMoney() + 20);
+							p.setMoney(p.getMoney() - 20);
+						}
+						else
+						{
+							throw new RuntimeException("NOT IMPLEMENTED");
+						}
+					}
+				}
 			}
 		};
 		cards[3] = new CardSetSpace(img("Images/Chance/04.jpg"), 39, true, true);
@@ -43,7 +54,7 @@ public class ChanceCardsStack
 				}
 			}
 		};
-		cards[6] = new CardSetSpace(img("Images/Chance/07.jpg"), Monopoly.JAIL_SPACE, false, false);
+		cards[6] = new CardSetSpace(img("Images/Chance/07.jpg"), 10, false, false);
 		cards[7] = new Card(img("Images/Chance/08.jpg"))
 		{
 			@Override
