@@ -24,7 +24,7 @@ public class WingsOfPraiseStack
 
 		tempImg = ImageIO.read(new File("Images\\Wings of Praise\\05.jpg"));
 		Card img5 = new CardSetSpace(tempImg, 10,false, false);
-
+		
 		tempImg = ImageIO.read(new File("Images\\Wings of Praise\\06.jpg"));
 		Card img6 = new CardGainMoney(/*set*/);
 

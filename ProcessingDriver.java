@@ -17,6 +17,8 @@ public class ProcessingDriver extends PApplet
 	Die die = new Die();
 	boolean wait = false;
 	
+	Property[] properties;
+	
 	public int[] getCoordsForPoint(int index, int playerNo)
 	{
 		int addAmt = index % 10 != 0 ? 20 : 0;
@@ -89,6 +91,8 @@ public class ProcessingDriver extends PApplet
 		background(0);
 		noStroke();
 		boardImage = loadImage("Images\\Board.png");
+		
+		properties = PropertiesCardStack.PropertiesStack();
 	}
 	
 	public void draw()
@@ -121,15 +125,11 @@ public class ProcessingDriver extends PApplet
 				for(int i = 0; i < players.size(); i++)
 				{
 					Player player = players.get(i);
-					if(a)
-					{
-						player.setSpace((player.getSpace() + 1) % 40);
-					}
+					player.setSpace((player.getSpace() + 1) % 40);
 					int[] coords = getCoordsForPoint(player.getSpace(), i);
 					fill(players.get(i).getColor().getRGB());
 					ellipse(coords[0],coords[1],10,10);
 				}
-				a = false;
 				
 				count = 0;
 				
@@ -159,11 +159,8 @@ public class ProcessingDriver extends PApplet
 		}
 	}
 	
-	boolean a = false;
-	
 	public void keyPressed()
 	{
-		a = true;
 		switch(state)
 		{
 			case 0:
