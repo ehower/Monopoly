@@ -21,9 +21,9 @@ public class ProcessingDriver extends PApplet
 
 	Property[] properties;
 
-	private boolean drawBuyMenu = false;
+	private static boolean drawBuyMenu = false;
 
-	public void setDrawBuyMenu(boolean b)
+	public static void setDrawBuyMenu(boolean b)
 	{
 		drawBuyMenu = b;
 	}
