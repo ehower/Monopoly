@@ -10,6 +10,8 @@ public class Player
     private List<Property> properties = new ArrayList<>();
     private Color color;
     private int jailFreeCards = 0;
+    
+    private boolean owesSpace = false;
 
     public Player(String n, Color c)
     {
@@ -38,7 +40,20 @@ public class Player
     }
     public void setSpace(int s)
     {
-        space = s;
+        setSpace(s, true, true);
+    }
+    public void setSpace(int s, boolean collectMoney, boolean payRent)
+    {
+    	if(s < space) // Passed/On Go
+    		setMoney(getMoney() + 200);
+    	
+    	owesSpace = payRent;
+    	
+    	this.space = s;
+    }
+    public boolean owesSpace()
+    {
+    	return owesSpace;
     }
     public void setMoney(int m)
     {

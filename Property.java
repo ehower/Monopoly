@@ -1,3 +1,5 @@
+import java.awt.Image;
+
 public class Property
 {
 	private Player owner;
@@ -16,6 +18,7 @@ public class Property
 		this.color = color;
 		this.rents = rents;
 		this.houseCost = houseCost;
+		this.image = image;
 	}
 
 	public int addHouse()
@@ -29,6 +32,8 @@ public class Property
 		houses--;
 		return houseCost / 2;
 	}
+	
+	public Image getImage() { return image; }
 	
 	public int getHouses() { return houses; }
 	public void setHouses(int houses) { this.houses = houses; }
