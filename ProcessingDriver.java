@@ -196,9 +196,19 @@ public class ProcessingDriver extends PApplet
 					int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
 					fill(players.get(count).getColor().getRGB());
 					ellipse(coords[0],coords[1],10,10);
+					players.get(count).setJail(true);
 				}
 				
-				
+				else if(players.get(count).getSpace() == 38)
+				{
+					text("You have paid $100", (width-width/2 + 50),100);
+					players.get(count).setMoney(players.get(count).getMoney() -100);
+					delay(5000);
+				}
+				else if(players.get(count).getSpace() == 2 || players.get(count).getSpace() == 17 ||players.get(count).getSpace() == 33)
+				{
+					
+				}
 			}
 			break;
 
