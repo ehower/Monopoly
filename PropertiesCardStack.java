@@ -1,4 +1,5 @@
 import java.awt.Color;
+import processing.core.PImage;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class PropertiesCardStack
 			//exist, use any image as a filler.
 			BufferedImage tempImg = null;
 			int[] fillerRent = {0,0,0};
-	
+			
 			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
 			Property zero = new Property("fillerName", Color.BLUE, 0, 0,fillerRent, tempImg);
 	
