@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class WingsOfPraiseStack
 {
-	public CardPile WingsStack()
+	public static CardPile WingsStack()
 	{
 		try
 		{
