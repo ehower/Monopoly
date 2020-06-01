@@ -15,6 +15,60 @@ public class ProcessingDriver extends PApplet
 	int count = 0;
 	boolean winner = false;
 	
+	public int[] getCoordsForPoint(int index, int playerNo)
+	{
+		int addAmt = index % 10 == 0 ? 0 : 30;
+		
+		int[] coord;
+		
+		if(index < 10)
+		{
+			coord = new int[] { 620 - index * 55 - addAmt, 700 };
+		}
+		else if(index < 20)
+		{
+			coord = new int[] { 45, 660 - index * 55 + addAmt };
+		}
+		else if(index < 30)
+		{
+			coord = new int[] { 30 + index * 55 + addAmt, 60 };
+		}
+		else if(index < 40)
+		{
+			coord = new int[] { 635, 70 + index * 55 + addAmt};
+		}
+		else
+			coord = null;
+		
+		if(coord != null)
+		{
+			if(playerNo == 0)
+			{
+				coord[0] -= 15;
+				coord[1] -= 15;
+			}
+			else if(playerNo == 1)
+			{
+				coord[0] += 15;
+				coord[1] -= 15;
+			}
+			else if(playerNo == 2)
+			{
+				coord[0] += 15;
+				coord[1] += 15;
+			}
+			else if(playerNo == 3)
+			{
+				coord[0] -= 15;
+				coord[1] += 15;
+			}
+			
+			return coord;
+		}
+		else
+			return null;
+	}
+	
 	private static List<Player> players;
 	
 	public static void main (String[] args)
