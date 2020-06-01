@@ -55,6 +55,9 @@ public class ChanceCardsStack
 		cards[8] = new CardJail(img("Images/Chance/09.jpg"));
 		cards[9] = new CardGainMoney(img("Images/Chance/10.jpg"), 50);
 		cards[10] = new CardSetSpace(img("Images/Chance/11.jpg"), 18, true, true, true);
+		cards[11] = new CardSetSpace(img("Images/Chance/12.jpg"), 13, true, true);
+		cards[12] = new CardSetSpace(img("Images/Chance/13.jpg"), 21, true, true);
+		cards[13] = new CardGainMoney(img("Images/Chance/Image14.jpg"), 100);
 		
 		return new CardPile(cards, img("Images/Chance/front.jpg"));
 	}

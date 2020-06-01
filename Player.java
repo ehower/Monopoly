@@ -42,9 +42,9 @@ public class Player
     {
         setSpace(s, true, true, true);
     }
-    public void setSpace(int s, boolean collectMoney, boolean payRent, boolean canBuy)
+    public void setSpace(int s, boolean collectGoMoney, boolean payRent, boolean canBuy)
     {
-    	if(s < space) // Passed/On Go
+    	if(s < space && collectGoMoney) // Passed/On Go
     		setMoney(getMoney() + 200);
     	
     	owesSpace = payRent;
