@@ -30,8 +30,10 @@ public class ProcessingDriver extends PApplet
 	String statusText;
 	
 	Property[] properties;
+	
+	boolean passPressed = false;
 
-	private static boolean drawBuyMenu = true;
+	private static boolean drawBuyMenu = false;
 
 	public static void setDrawBuyMenu(boolean b)
 	{
@@ -226,7 +228,8 @@ public class ProcessingDriver extends PApplet
 				{
 					image(propertyToDraw, width - (-450/2 + width/2), height/2 - 50, 350, 400);
 					
-					if(properties[players.get(count).getSpace()].getOwner() == null && drawBuyMenu)
+					System.out.println(drawBuyMenu);
+					if(properties[players.get(count).getSpace()].getOwner() == null && !passPressed)
 					{
 						fill(255);
 						rect(width/2 + 50, height/2-50, 75,35);
@@ -404,7 +407,7 @@ public class ProcessingDriver extends PApplet
 				cardToDraw = null;
 				die.rollDice();
 				propertyToDraw = null;
-				drawBuyMenu = true;
+				passPressed = false;
 				players.get(count).setSpace((players.get(count).getSpace() + die.getResult()) % 40);
 				
 				int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
@@ -414,16 +417,15 @@ public class ProcessingDriver extends PApplet
 				
 				doAllThisStuff();
 			}
-		if(drawBuyMenu && mouseX <= (width/2 + 125) && mouseX >= width/2 + 50 && mouseY <= height/2 -15 && mouseY >= height/2 -50)
+		if(state > 1 && mouseX <= (width/2 + 125) && mouseX >= width/2 + 50 && mouseY <= height/2 -15 && mouseY >= height/2 -50)
 		{
 			properties[players.get(count).getSpace()].setOwner(players.get(count));
 			players.get(count).setMoney(players.get(count).getMoney() - properties[players.get(count).getSpace()].getCost());
-			drawBuyMenu = false;
 		}
 		
-		if(drawBuyMenu && mouseX <= (width/2 + 125) && mouseX >= width/2 + 50 && mouseY <= height/2 + 135 && mouseY >= height/2 + 100)
+		if(state > 1 && mouseX <= (width/2 + 125) && mouseX >= width/2 + 50 && mouseY <= height/2 + 135 && mouseY >= height/2 + 100)
 		{
-			drawBuyMenu = false;
+			passPressed = true;
 		}
 		
 	}
