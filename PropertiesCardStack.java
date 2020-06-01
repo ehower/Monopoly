@@ -32,7 +32,6 @@ public class PropertiesCardStack
 		
 		tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
 		Property four = new Property("fillerName", "filler", 0,fillerRent, tempImg);
-		return null;
 		
 		
 	}
