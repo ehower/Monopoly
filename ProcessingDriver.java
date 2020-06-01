@@ -15,6 +15,7 @@ public class ProcessingDriver extends PApplet
 	int count = 0;
 	boolean winner = false;
 	Die die = new Die();
+	boolean wait = false;
 	
 	public int[] getCoordsForPoint(int index, int playerNo)
 	{
@@ -139,6 +140,13 @@ public class ProcessingDriver extends PApplet
 				fill(255);
 				textSize(45);
 				text(Integer.toString(die.getResult()), 730, 200);
+				
+				wait = true;
+				
+				players.get(count).setSpace(players.get(count).getSpace() + die.getResult());
+				int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
+				fill(players.get(count).getColor().getRGB());
+				ellipse(coords[0],coords[1],10,10);
 			}
 			break;
 			
@@ -208,7 +216,7 @@ public class ProcessingDriver extends PApplet
 	
 	public void mousePressed()
 	{	
-		if(mouseX <= 850 && mouseX >=730 && state == 2)
+		if(mouseX <= 850 && mouseX >=730 && state == 2 && !wait)
 			if(mouseY <= 130 && mouseY >= 90)
 			{
 				die.rollDice();
