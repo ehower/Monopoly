@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 public class Neighborhoods
 {
 	//each neighborhood and the properties in them
@@ -13,32 +15,30 @@ public class Neighborhoods
 	String[] healthNeighborhood = {"Counseling Office","Nurses Office","blocker"};
 	
 	//this method will ask the player what Color Neighborhood they would like to check the properties needed to have Monopoly over it
-	public String[] getCards(String color)
+	public String[] getCards(Color color)
 	{
-		String[] defaultCase = {"wrong", "color"};
-		
-		if(color.equalsIgnoreCase("Purple"))
+		if(color.equals(Color.MAGENTA))
 			return purpleNeighborhood;
-		else if(color.equalsIgnoreCase("Light Blue"))
+		else if(color.equals(Color.BLUE))
 			return lightBlueNeighborhood;
-		else if(color.equalsIgnoreCase("Pink"))
+		else if(color.equals(Color.PINK))
 			return pinkNeighborhood;
-		else if(color.equalsIgnoreCase("Orange"))
+		else if(color.equals(Color.ORANGE))
 			return orangeNeighborhood;
-		else if(color.equalsIgnoreCase("Red"))
+		else if(color.equals(Color.RED))
 			return redNeighborhood;
-		else if(color.equalsIgnoreCase("Yellow"))
+		else if(color.equals(Color.YELLOW))
 			return yellowNeighborhood;
-		else if(color.equalsIgnoreCase("Green"))
+		else if(color.equals(Color.GREEN))
 			return greenNeighborhood;
-		else if(color.equalsIgnoreCase("Blue"))
+		else if(color.equals(Color.BLUE.darker()))
 			return blueNeighborhood;
-		else if(color.equalsIgnoreCase("Special"))
+		else if(color.equals(Color.WHITE))
 			return specialNeighborhood;
-		else if(color.equalsIgnoreCase("Health"))
+		else if(color.equals(Color.BLACK))
 			return healthNeighborhood;
 		else
-			return defaultCase;
+			return null;
 	}
 }
 
