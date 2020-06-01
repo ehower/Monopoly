@@ -8,12 +8,12 @@ public class Player
     private int space = 0;
     private int money = 1500;
     private List<Property> properties = new ArrayList<>();
-    private Color color;
+    private String color;
     private int jailFreeCards = 0;
     
     private boolean owesSpace = false;
 
-    public Player(String n, Color c)
+    public Player(String n, String c)
     {
         name = n;
         color = c;
@@ -68,11 +68,11 @@ public class Player
     {
         properties.add(p);
     }
-    public void setColor(Color c)
+    public void setColor(String c)
     {
     	this.color = c;
     }
-    public Color getColor()
+    public String getColor()
     {
     	return color;
     }

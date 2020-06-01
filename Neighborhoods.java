@@ -9,6 +9,8 @@ public class Neighborhoods
 	String[] yellowNeighborhood = {"Mr. Dresch", "Mrs. Lebo", "Mrs. Light"};
 	String[] greenNeighborhood = {"Mrs. Kohr", "Mr. Schultheis", "Mr. Thomas"};
 	String[] blueNeighborhood = {"Mr. Eggert", "Mrs. Reed"};
+	String[] specialNeighborhood = {"Auditorium", "Band Room", "LGI","Library","blocker"};
+	String[] healthNeighborhood = {"Counseling Office","Nurses Office","blocker"};
 	
 	//this method will ask the player what Color Neighborhood they would like to check the properties needed to have Monopoly over it
 	public String[] getCards(String color)
@@ -31,6 +33,10 @@ public class Neighborhoods
 			return greenNeighborhood;
 		else if(color.equalsIgnoreCase("Blue"))
 			return blueNeighborhood;
+		else if(color.equalsIgnoreCase("Special"))
+			return specialNeighborhood;
+		else if(color.equalsIgnoreCase("Health"))
+			return healthNeighborhood;
 		else
 			return defaultCase;
 	}

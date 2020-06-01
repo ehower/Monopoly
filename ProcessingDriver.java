@@ -10,6 +10,8 @@ public class ProcessingDriver extends PApplet
 	int state = 0;
 	String typing = "";
 	int numPlayers = 0;
+	String playerName = "";
+	int count = 0;
 	
 	private static List<Player> players;
 	
@@ -31,7 +33,8 @@ public class ProcessingDriver extends PApplet
 	}
 	
 	public void draw()
-	{
+	{	
+		background(0);
 		image(boardImage,0,0,width/2, width/2);
 		
 		switch(state)
@@ -40,9 +43,16 @@ public class ProcessingDriver extends PApplet
 			{
 				textSize(25);
 				text("How many players are in your game? \nHit enter to save or delete to remove text.", width-width/2 + 50, height/2);
-				text(typing, width-width/2 + 50, height - height/3);
-				
+				text(typing, width-width/2 + 50, height - height/3);		
 			}
+			break;
+			
+			case 1: 
+			{
+				textSize(25);
+				text("Enter the name of player " + (count + 1) + "\nHit enter to save or delete to remove text.", width-width/2 + 50, height/2);
+				text(typing, width-width/2 + 50, height - height/3);	
+			}	
 			break;
 		}
 	}
@@ -58,6 +68,35 @@ public class ProcessingDriver extends PApplet
 					numPlayers = Integer.parseInt(typing);
 					players = new ArrayList<>(numPlayers);
 					typing = ""; 
+					state = 1;
+				 }
+				 
+				 else if (key == DELETE)
+				 {
+					 typing = "";
+				 }
+					    
+				 else 
+				 {
+					typing = typing + key; 
+				 }
+			}
+			break;
+			
+			case 1:
+			{
+				 if (key == '\n' ) 
+				 {
+					String[] colors = {"red", "orange", "blue", "green"};
+					playerName = typing;
+					typing = ""; 
+					players.add(new Player(playerName, colors[count]));
+					count++;
+					
+					if(count == numPlayers)
+					{
+						state++;
+					}
 				 }
 				 
 				 else if (key == DELETE)
