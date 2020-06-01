@@ -92,6 +92,7 @@ public class Player
     }
     public void setMoney(int m)
     {
+    	System.out.println("SET MONEY " + m);
         money = m;
         if(money < 0)
         	ProcessingDriver.lose(this); // gamer down

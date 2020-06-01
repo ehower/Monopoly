@@ -207,22 +207,8 @@ public class ProcessingDriver extends PApplet
 				text(players.get(count).getName() + ", it is your turn!", (width-width/2 + 50),50);
 				text("$" + players.get(count).getMoney(), 20, height - 40);
 				
-				if(players.get(count).getSpace() == 4)
-				{
-					if(players.get(count).getMoney()*.1 < 200)
-					{
-						statusText = "10% of your wealth has been taken";
-						players.get(count).setMoney(players.get(count).getMoney() -(int)(players.get(count).getMoney()*.1));
-					}
-					
-					else
-					{
-						statusText = "You have paid $200";
-						players.get(count).setMoney(players.get(count).getMoney() -200);
-					}
-				}
 				
-				else if(players.get(count).getSpace() == 30)
+				if(players.get(count).getSpace() == 30)
 				{
 					statusText = "Go to ISS!";
 					players.get(count).setSpace(10);
@@ -232,12 +218,7 @@ public class ProcessingDriver extends PApplet
 					players.get(count).setJail(true);
 				}
 				
-				else if(players.get(count).getSpace() == 38)
-				{
-					statusText = "You have paid $100";
-					players.get(count).setMoney(players.get(count).getMoney() -100);
-				}
-				else if(cardToDraw != null)
+				if(cardToDraw != null)
 				{
 					image(cardToDraw, width - (-450/2 + width/2), height/2,450,270);
 				}
@@ -261,6 +242,7 @@ public class ProcessingDriver extends PApplet
 						text("Pass", width/2 + 50, height/2 + 127);
 					}
 				}
+				
 				if(statusText != null && !statusText.isEmpty())
 				{
 					text(statusText, (width-width/2 + 50),245);
@@ -276,6 +258,27 @@ public class ProcessingDriver extends PApplet
 	// I'm sorry
 	public void doAllThisStuff()
 	{			
+		if(players.get(count).getSpace() == 4)
+		{
+			if(players.get(count).getMoney()*.1 < 200)
+			{
+				statusText = "10% of your wealth has been taken";
+				players.get(count).setMoney(players.get(count).getMoney() -(int)(players.get(count).getMoney()*.1));
+			}
+			
+			else
+			{
+				statusText = "You have paid $200";
+				players.get(count).setMoney(players.get(count).getMoney() -200);
+			}
+		}
+		else if(players.get(count).getSpace() == 38)
+		{
+			statusText = "You have paid $100";
+			players.get(count).setMoney(players.get(count).getMoney() -100);
+		}
+		
+		
 		// This works, don't question any of it
 		int playerSpace = players.get(count).getSpace();
 		if(cardToDraw == null && propertyToDraw == null)
