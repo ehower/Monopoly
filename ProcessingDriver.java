@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,7 +88,7 @@ public class ProcessingDriver extends PApplet
 			{
 				 if (key == '\n' ) 
 				 {
-					String[] colors = {"red", "orange", "blue", "green"};
+					Color[] colors = {Color.red, Color.orange, Color.blue, Color.green};
 					playerName = typing;
 					typing = ""; 
 					players.add(new Player(playerName, colors[count]));
