@@ -16,6 +16,7 @@ public class ProcessingDriver extends PApplet
 	boolean winner = false;
 	Die die = new Die();
 	boolean wait = false;
+	boolean doubles = false;
 
 
 	Property[] properties;
@@ -138,11 +139,9 @@ public class ProcessingDriver extends PApplet
 					ellipse(coords[0],coords[1],10,10);
 				}
 
-				count = 0;
-
 				fill(255);
 				textSize(30);
-				text(players.get(0).getName() + ", it is your turn!", (width-width/2 + 50),50);
+				text(players.get(count).getName() + ", it is your turn!", (width-width/2 + 50),50);
 				rect(730,90,130,40);
 
 				fill(0);
@@ -151,12 +150,55 @@ public class ProcessingDriver extends PApplet
 				fill(255);
 				textSize(45);
 				text(Integer.toString(die.getResult()), 730, 200);
-			}
-			break;
-
-			case 3:
-			{
-
+				
+				if(doubles) {text("DOUBLES!", (width-width/2 + 50),300);}
+				
+				if(wait && !drawBuyMenu)
+				{System.out.println(count + ":" + players.size());
+					if(die.getRolledDoubles())
+					{
+						doubles = true;
+						wait = false;
+					}
+					else
+					{
+						wait = false;
+						count = (count + 1)%players.size();
+						doubles = false;
+					}
+				}
+				
+				fill(255);
+				textSize(30);
+				text(players.get(count).getName() + ", it is your turn!", (width-width/2 + 50),50);
+				
+				if(players.get(count).getSpace() == 4)
+				{
+					if(players.get(count).getMoney()*.1 < 200)
+					{
+						text("10% of your wealth has been taken",(width-width/2 + 50), 100);
+						players.get(count).setMoney(players.get(count).getMoney() -(int)(players.get(count).getMoney()*.1));
+						delay(5000);
+					}
+					
+					else
+					{
+						text("You have paid $200", (width-width/2 + 50),100);
+						players.get(count).setMoney(players.get(count).getMoney() -200);
+						delay(5000);
+					}
+				}
+				
+				else if(players.get(count).getSpace() == 30)
+				{
+					text("Go to ISS!", (width-width/2+50),100);
+					players.get(count).setSpace(10);
+					int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
+					fill(players.get(count).getColor().getRGB());
+					ellipse(coords[0],coords[1],10,10);
+				}
+				
+				
 			}
 			break;
 
@@ -204,6 +246,7 @@ public class ProcessingDriver extends PApplet
 					if(count == numPlayers)
 					{
 						state++;
+						count = 0;
 					}
 				 }
 
@@ -236,21 +279,6 @@ public class ProcessingDriver extends PApplet
 				ellipse(coords[0],coords[1],10,10);
 				wait = true;
 			}
-
-		if(wait)
-		{
-			if(die.getRolledDoubles())
-				wait = false;
-			else
-			{
-				wait = false;
-
-				if(count == players.size())
-					count = 0;
-				else
-					count++;
-			}
-		}
 	}
 
 	public static List<Player> getPlayers()
