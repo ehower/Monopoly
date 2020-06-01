@@ -7,6 +7,7 @@ import processing.core.PImage;
 
 public class ProcessingDriver extends PApplet
 {
+	// If you wish to gain anything out of reading this code, turn back now.
 	PImage boardImage;
 	int state = 0;
 	String typing = "";
@@ -45,6 +46,11 @@ public class ProcessingDriver extends PApplet
 			if(p.equals(players.get(i)))
 			{
 				players.remove(i);
+				for(Property prop : p.getProperties())
+				{
+					prop.setOwner(null);
+					prop.setHouses(0);
+				}
 				return;
 			}
 		}
@@ -82,7 +88,7 @@ public class ProcessingDriver extends PApplet
 		}
 		else
 			return null;
-
+		
 		if(playerNo == 0)
 		{
 			coord[0] -= 15;
@@ -103,17 +109,17 @@ public class ProcessingDriver extends PApplet
 			coord[0] -= 15;
 			coord[1] += 15;
 		}
-
+		
 		return coord;
 	}
-
+	
 	private static List<Player> players;
-
+	
 	public static void main (String[] args)
 	{
 		PApplet.main("ProcessingDriver");
 	}
-
+	
 	public void settings()
 	{
 		size(1366,768);
@@ -153,7 +159,7 @@ public class ProcessingDriver extends PApplet
 				text(typing, width-width/2 + 50, height - height/3);
 			}
 			break;
-
+			
 			case 2:
 			{
 				ellipseMode(CENTER);
@@ -165,7 +171,7 @@ public class ProcessingDriver extends PApplet
 					fill(players.get(i).getColor().getRGB());
 					ellipse(coords[0],coords[1],10,10);
 				}
-
+				
 				fill(255);
 				textSize(30);
 				text(players.get(count).getName() + ", it is your turn!", (width-width/2 + 50),50);
@@ -268,18 +274,25 @@ public class ProcessingDriver extends PApplet
 	
 	// I'm sorry
 	public void doAllThisStuff()
-	{
+	{			
+		// This works, don't question any of it
 		int playerSpace = players.get(count).getSpace();
 		if(cardToDraw == null && propertyToDraw == null)
 		{
-			if(players.get(count).getSpace() == 2 || players.get(count).getSpace() == 17 ||players.get(count).getSpace() == 33)
+			Player p = players.get(count);
+			
+			if(p.getSpace() == 2 
+					|| p.getSpace() == 17 
+					|| p.getSpace() == 33) // yeah
 			{
 				cardToUse = wings.takeTop();
 				cardToDraw = new PImage(cardToUse.getImg());
 				
 				cardToUse.affect(players.get(count));
 			}
-			else if(players.get(count).getSpace() == 7 || players.get(count).getSpace() == 22 || players.get(count).getSpace() == 36)
+			else if(p.getSpace() == 7 
+					|| p.getSpace() == 22 
+					|| p.getSpace() == 36) // yes
 			{
 				cardToUse = chance.takeTop();
 				cardToDraw = new PImage(cardToUse.getImg());
@@ -287,23 +300,35 @@ public class ProcessingDriver extends PApplet
 				cardToUse.affect(players.get(count));
 			}
 			
-			else if(playerSpace != 0 && playerSpace !=4 && playerSpace != 10 && playerSpace != 30 && playerSpace != 38 && playerSpace != 20)
+			else if(playerSpace != 0 
+					&& playerSpace != 4 
+					&& playerSpace != 10 
+					&& playerSpace != 30 
+					&& playerSpace != 38 
+					&& playerSpace != 20) // yes
 			{
-				System.out.println(players.get(count).getSpace());
-				propertyToUse = properties[players.get(count).getSpace()];
+				propertyToUse = properties[p.getSpace()];
 				propertyToDraw = new PImage(propertyToUse.getImage());
+			}
+			
+			if(p.owesSpace() 
+					&& !p.equals(properties[p.getSpace()].getOwner()) 
+					&& properties[p.getSpace()].getOwner() != null)
+			{
+				p.setMoney(p.getMoney() - properties[p.getSpace()].getRent());
 				
+				p.setOwesSpace(false);
 			}
 		}
 	}
-
+	
 	public void keyPressed()
 	{
 		switch(state)
 		{
 			case 0:
 			{
-				 if (key == '\n' )
+				 if (key == '\n')
 				 {
 					numPlayers = Integer.parseInt(typing);
 					players = new ArrayList<>(numPlayers);
@@ -311,7 +336,7 @@ public class ProcessingDriver extends PApplet
 					state = 1;
 				 }
 
-				 else if (key == DELETE)
+				 else if (key == DELETE || key == BACKSPACE)
 				 {
 					 typing = "";
 				 }
@@ -367,6 +392,7 @@ public class ProcessingDriver extends PApplet
 				propertyToDraw = null;
 				drawBuyMenu = true;
 				players.get(count).setSpace((players.get(count).getSpace() + die.getResult()) % 40);
+				
 				int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
 				fill(players.get(count).getColor().getRGB());
 				ellipse(coords[0],coords[1],10,10);

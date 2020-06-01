@@ -48,8 +48,6 @@ public class Player
     	if(s < space && collectGoMoney) // Passed/On Go
     		setMoney(getMoney() + 200);
     	
-    	owesSpace = payRent;
-    	
     	this.space = s;
     	
     	if(canBuy)
@@ -71,6 +69,7 @@ public class Player
     			ProcessingDriver.setDrawBuyMenu(false);
     			break;
 			default:
+				owesSpace = payRent;
 				ProcessingDriver.setDrawBuyMenu(true);
     		}
     	}
@@ -86,6 +85,10 @@ public class Player
     public boolean owesSpace()
     {
     	return owesSpace;
+    }
+    public void setOwesSpace(boolean b)
+    {
+    	this.owesSpace = b;
     }
     public void setMoney(int m)
     {
