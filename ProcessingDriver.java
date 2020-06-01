@@ -18,25 +18,25 @@ public class ProcessingDriver extends PApplet
 	
 	public int[] getCoordsForPoint(int index, int playerNo)
 	{
-		int addAmt = index % 10 == 0 ? 0 : 30;
+		int addAmt = index % 10 == 0 ? 0 : 70;
 		
 		int[] coord;
 		
 		if(index < 10)
 		{
-			coord = new int[] { 620 - index * 55 - addAmt, 700 };
+			coord = new int[] { 630 - index * 55 - addAmt, 640 };
 		}
 		else if(index < 20)
 		{
-			coord = new int[] { 45, 660 - index * 55 + addAmt };
+			coord = new int[] { 35, 660 - (index - 10) * 55 - addAmt };
 		}
 		else if(index < 30)
 		{
-			coord = new int[] { 30 + index * 55 + addAmt, 60 };
+			coord = new int[] { 30 + (index - 20) * 55 + addAmt, 60 };
 		}
 		else if(index < 40)
 		{
-			coord = new int[] { 635, 70 + index * 55 + addAmt};
+			coord = new int[] { 635, 70 + (index - 30) * 55 + addAmt};
 		}
 		else
 			coord = null;
@@ -116,22 +116,14 @@ public class ProcessingDriver extends PApplet
 			{
 				ellipseMode(CENTER);
 				
-				fill(players.get(0).getColor().getRGB());
-				ellipse(604,626,10,10);
-				
-				fill(players.get(1).getColor().getRGB());
-				ellipse(632,626,10,10);
-				
-				if(players.size() >= 3)
+				for(int i = 0; i < players.size(); i++)
 				{
-				fill(players.get(2).getColor().getRGB());
-				ellipse(604,657,10,10);
-				}
-				
-				if(players.size() == 4)
-				{
-				fill(players.get(3).getColor().getRGB());
-				ellipse(632,657,10,10);
+					Player player = players.get(i);
+					if(Math.random() < 0.1)
+						player.setSpace((player.getSpace() + 1) % 40);
+					int[] coords = getCoordsForPoint(player.getSpace(), i);
+					fill(players.get(i).getColor().getRGB());
+					ellipse(coords[0],coords[1],10,10);
 				}
 				
 				count = 0;
