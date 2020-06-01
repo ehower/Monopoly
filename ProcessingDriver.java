@@ -18,8 +18,13 @@ public class ProcessingDriver extends PApplet
 	boolean wait = false;
 	boolean doubles = false;
 	CardPile wings;
+	CardPile chance;
+	
+	PImage cardToDraw;
+	Card cardToUse;
 
-
+	String statusText;
+	
 	Property[] properties;
 
 	private static boolean drawBuyMenu = false;
@@ -105,6 +110,7 @@ public class ProcessingDriver extends PApplet
 		properties = PropertiesCardStack.PropertiesStack();
 		
 		wings = WingsOfPraiseStack.WingsStack();
+		chance = ChanceCardsStack.create();
 	}
 
 	public void draw()
@@ -168,6 +174,7 @@ public class ProcessingDriver extends PApplet
 						wait = false;
 						count = (count + 1)%players.size();
 						doubles = false;
+						statusText = null;
 					}
 				}
 				
@@ -179,22 +186,20 @@ public class ProcessingDriver extends PApplet
 				{
 					if(players.get(count).getMoney()*.1 < 200)
 					{
-						text("10% of your wealth has been taken",(width-width/2 + 50), 100);
+						statusText = "10% of your wealth has been taken";
 						players.get(count).setMoney(players.get(count).getMoney() -(int)(players.get(count).getMoney()*.1));
-						delay(5000);
 					}
 					
 					else
 					{
-						text("You have paid $200", (width-width/2 + 50),100);
+						statusText = "You have paid $200";
 						players.get(count).setMoney(players.get(count).getMoney() -200);
-						delay(5000);
 					}
 				}
 				
 				else if(players.get(count).getSpace() == 30)
 				{
-					text("Go to ISS!", (width-width/2+50),100);
+					statusText = "Go to ISS!";
 					players.get(count).setSpace(10);
 					int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
 					fill(players.get(count).getColor().getRGB());
@@ -204,21 +209,45 @@ public class ProcessingDriver extends PApplet
 				
 				else if(players.get(count).getSpace() == 38)
 				{
-					text("You have paid $100", (width-width/2 + 50),100);
+					statusText = "You have paid $100";
 					players.get(count).setMoney(players.get(count).getMoney() -100);
-					delay(5000);
 				}
-				else if(players.get(count).getSpace() == 2 || players.get(count).getSpace() == 17 ||players.get(count).getSpace() == 33)
+				else if(cardToDraw != null)
 				{
-					Card temp = wings.takeTop();
-					
-					image(new PImage(temp.getImg()),width - (-450/2 + width/2), height/2,450,270);
+					image(cardToDraw, width - (-450/2 + width/2), height/2,450,270);
+				}
+				
+				if(statusText != null && !statusText.isEmpty())
+				{
+					text(statusText, (width-width/2 + 50),245);
 				}
 			}
 			break;
 
 			default:
 				System.out.println("If you are seeing this, Ethan did something very wrong.");
+		}
+	}
+	
+	// I'm sorry
+	public void doAllThisStuff()
+	{
+		if(cardToDraw == null)
+		{
+			if(players.get(count).getSpace() == 2 || players.get(count).getSpace() == 17 ||players.get(count).getSpace() == 33)
+			{
+				cardToUse = wings.takeTop();
+				cardToDraw = new PImage(cardToUse.getImg());
+				
+				cardToUse.affect(players.get(count));
+			}
+			else if(players.get(count).getSpace() == 7 || players.get(count).getSpace() == 22)
+			{
+				cardToUse = chance.takeTop();
+				cardToDraw = new PImage(cardToUse.getImg());
+				
+				cardToUse.affect(players.get(count));
+			}
 		}
 	}
 
@@ -287,12 +316,15 @@ public class ProcessingDriver extends PApplet
 		if(mouseX <= 850 && mouseX >=730 && state == 2 && !wait)
 			if(mouseY <= 130 && mouseY >= 90)
 			{
+				cardToDraw = null;
 				die.rollDice();
 				players.get(count).setSpace((players.get(count).getSpace() + die.getResult()) % 40);
 				int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
 				fill(players.get(count).getColor().getRGB());
 				ellipse(coords[0],coords[1],10,10);
 				wait = true;
+				
+				doAllThisStuff();
 			}
 	}
 
