@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -7,6 +10,8 @@ public class ProcessingDriver extends PApplet
 	int state = 0;
 	String typing = "";
 	int numPlayers = 0;
+	
+	private static List<Player> players;
 	
 	public static void main (String[] args)
 	{
@@ -51,6 +56,7 @@ public class ProcessingDriver extends PApplet
 				 if (key == '\n' ) 
 				 {
 					numPlayers = Integer.parseInt(typing);
+					players = new ArrayList<>(numPlayers);
 					typing = ""; 
 				 }
 				 
@@ -69,8 +75,10 @@ public class ProcessingDriver extends PApplet
 			default:
 				System.out.println("If you are seeing this, Ethan did something very wrong.");
 		}
-			
-			
-			
-		}
+	}
+	
+	public static List<Player> getPlayers()
+	{
+		return players;
+	}
 }
