@@ -19,56 +19,57 @@ public class ProcessingDriver extends PApplet
 	
 	public int[] getCoordsForPoint(int index, int playerNo)
 	{
-		int addAmt = index % 10 == 0 ? 0 : 70;
+		int addAmt = 70;
 		
 		int[] coord;
 		
+		final int width = 56;
+		
 		if(index < 10)
 		{
-			coord = new int[] { 630 - index * 55 - addAmt, 640 };
+			addAmt -= 5;
+			coord = new int[] { 630 - index * width - addAmt, 640 };
 		}
 		else if(index < 20)
 		{
-			coord = new int[] { 35, 660 - (index - 10) * 55 - addAmt };
+			addAmt += 20;
+			coord = new int[] { 35, 660 - (index % 10) * width - addAmt };
 		}
 		else if(index < 30)
 		{
-			coord = new int[] { 30 + (index - 20) * 55 + addAmt, 60 };
+			addAmt += 15;
+			coord = new int[] { 30 + (index % 10) * width + addAmt, 30 };
 		}
 		else if(index < 40)
 		{
-			coord = new int[] { 635, 70 + (index - 30) * 55 + addAmt};
-		}
-		else
-			coord = null;
-		
-		if(coord != null)
-		{
-			if(playerNo == 0)
-			{
-				coord[0] -= 15;
-				coord[1] -= 15;
-			}
-			else if(playerNo == 1)
-			{
-				coord[0] += 15;
-				coord[1] -= 15;
-			}
-			else if(playerNo == 2)
-			{
-				coord[0] += 15;
-				coord[1] += 15;
-			}
-			else if(playerNo == 3)
-			{
-				coord[0] -= 15;
-				coord[1] += 15;
-			}
-			
-			return coord;
+			addAmt -= 20;
+			coord = new int[] { 635, 70 + (index % 10) * width + addAmt};
 		}
 		else
 			return null;
+		
+		if(playerNo == 0)
+		{
+			coord[0] -= 15;
+			coord[1] -= 15;
+		}
+		else if(playerNo == 1)
+		{
+			coord[0] += 15;
+			coord[1] -= 15;
+		}
+		else if(playerNo == 2)
+		{
+			coord[0] += 15;
+			coord[1] += 15;
+		}
+		else if(playerNo == 3)
+		{
+			coord[0] -= 15;
+			coord[1] += 15;
+		}
+			
+		return coord;
 	}
 	
 	private static List<Player> players;
@@ -120,12 +121,15 @@ public class ProcessingDriver extends PApplet
 				for(int i = 0; i < players.size(); i++)
 				{
 					Player player = players.get(i);
-					if(Math.random() < 0.1)
+					if(a)
+					{
 						player.setSpace((player.getSpace() + 1) % 40);
+					}
 					int[] coords = getCoordsForPoint(player.getSpace(), i);
 					fill(players.get(i).getColor().getRGB());
 					ellipse(coords[0],coords[1],10,10);
 				}
+				a = false;
 				
 				count = 0;
 				
@@ -155,8 +159,11 @@ public class ProcessingDriver extends PApplet
 		}
 	}
 	
+	boolean a = false;
+	
 	public void keyPressed()
 	{
+		a = true;
 		switch(state)
 		{
 			case 0:
