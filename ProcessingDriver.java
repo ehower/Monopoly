@@ -17,6 +17,7 @@ public class ProcessingDriver extends PApplet
 	Die die = new Die();
 	boolean wait = false;
 	
+	
 	Property[] properties;
 	
 	public int[] getCoordsForPoint(int index, int playerNo)
@@ -142,23 +143,13 @@ public class ProcessingDriver extends PApplet
 				
 				fill(255);
 				textSize(45);
-				text(Integer.toString(die.getResult()), 730, 200);
+				text(Integer.toString(die.getResult()), 730, 200);	
+			}
+			break;
+			
+			case 3:
+			{
 				
-				
-				
-				if(wait)
-				{
-					if(die.getRolledDoubles())
-						wait = false;
-					else
-					{
-						wait = false;
-						if(count == players.size())
-							count = 0;
-						else
-							count++;
-					}
-				}
 			}
 			break;
 			
@@ -238,6 +229,21 @@ public class ProcessingDriver extends PApplet
 				ellipse(coords[0],coords[1],10,10);
 				wait = true;
 			}
+		
+		if(wait)
+		{
+			if(die.getRolledDoubles())
+				wait = false;
+			else
+			{
+				wait = false;
+				
+				if(count == players.size())
+					count = 0;
+				else
+					count++;
+			}
+		}
 	}
 	
 	public static List<Player> getPlayers()
