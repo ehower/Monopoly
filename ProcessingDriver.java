@@ -22,6 +22,9 @@ public class ProcessingDriver extends PApplet
 	
 	PImage cardToDraw;
 	Card cardToUse;
+	
+	Property propertyToUse;
+	PImage propertyToDraw;
 
 	String statusText;
 	
@@ -216,7 +219,10 @@ public class ProcessingDriver extends PApplet
 				{
 					image(cardToDraw, width - (-450/2 + width/2), height/2,450,270);
 				}
-				
+				else if(propertyToDraw != null)
+				{
+					image(propertyToDraw, width - (-450/2 + width/2), height/2, 450, 514);
+				}
 				if(statusText != null && !statusText.isEmpty())
 				{
 					text(statusText, (width-width/2 + 50),245);
@@ -232,7 +238,8 @@ public class ProcessingDriver extends PApplet
 	// I'm sorry
 	public void doAllThisStuff()
 	{
-		if(cardToDraw == null)
+		int playerSpace = players.get(count).getSpace();
+		if(cardToDraw == null && propertyToDraw == null)
 		{
 			if(players.get(count).getSpace() == 2 || players.get(count).getSpace() == 17 ||players.get(count).getSpace() == 33)
 			{
@@ -241,12 +248,20 @@ public class ProcessingDriver extends PApplet
 				
 				cardToUse.affect(players.get(count));
 			}
-			else if(players.get(count).getSpace() == 7 || players.get(count).getSpace() == 22)
+			else if(players.get(count).getSpace() == 7 || players.get(count).getSpace() == 22 || players.get(count).getSpace() == 36)
 			{
 				cardToUse = chance.takeTop();
 				cardToDraw = new PImage(cardToUse.getImg());
 				
 				cardToUse.affect(players.get(count));
+			}
+			
+			else if(playerSpace != 0 && playerSpace !=4 && playerSpace != 10 && playerSpace != 30 && playerSpace != 38 && playerSpace != 20)
+			{
+				System.out.println(players.get(count).getSpace());
+				propertyToUse = properties[players.get(count).getSpace()];
+				propertyToDraw = new PImage(propertyToUse.getImage());
+				
 			}
 		}
 	}
@@ -318,6 +333,7 @@ public class ProcessingDriver extends PApplet
 			{
 				cardToDraw = null;
 				die.rollDice();
+				propertyToDraw = null;
 				players.get(count).setSpace((players.get(count).getSpace() + die.getResult()) % 40);
 				int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
 				fill(players.get(count).getColor().getRGB());

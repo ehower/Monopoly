@@ -22,21 +22,21 @@ public class PropertiesCardStack
 			BufferedImage tempImg = null;
 			int[] fillerRent = {0,0,0};
 			
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property zero = new Property("fillerName", Color.BLUE, 0, 0,fillerRent, tempImg);
 	
 			int[] keathRent = {10,30,90,160,250};
 			tempImg = ImageIO.read(new File("Images\\Properties\\keath.jpg"));
 			Property one = new Property("Mrs.Keath", Color.MAGENTA, 60, 50, keathRent,tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property two = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
 	
 			int[] wuoriRent = {20,60,180,320,450};
 			tempImg = ImageIO.read(new File("Images\\Properties\\wuori.jpg"));
 			Property three = new Property("Mr. Wuori", Color.MAGENTA, 60, 50, wuoriRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property four = new Property("fillerName", Color.WHITE, 0, 0,fillerRent, tempImg);
 	
 			int[] auditoriumRent = {25,50,100,200};
@@ -47,7 +47,7 @@ public class PropertiesCardStack
 			tempImg = ImageIO.read(new File("Images\\Properties\\marini.jpg"));
 			Property six = new Property("Frau Marini", Color.BLUE, 120, 50, frauRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property seven = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
 	
 			int[] plichtaRent = {40,100,300,450,600};
@@ -58,7 +58,7 @@ public class PropertiesCardStack
 			tempImg = ImageIO.read(new File("Images\\Properties\\zackey.jpg"));
 			Property nine = new Property("Mr. Wuori", Color.BLUE, 100, 50, zackeyRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property ten = new Property("fillerName", Color.WHITE, 0, 0,fillerRent, tempImg);
 	
 			int[] dissingerRent = {20,60,180,320,450};
@@ -84,7 +84,7 @@ public class PropertiesCardStack
 			tempImg = ImageIO.read(new File("Images\\Properties\\risser.jpg"));
 			Property sixteen = new Property("Mr. Risser", Color.ORANGE, 180, 100, risserRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property seventeen = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
 	
 			int[] warRent = {70,200,550,750,950};
@@ -95,14 +95,14 @@ public class PropertiesCardStack
 			tempImg = ImageIO.read(new File("Images\\Properties\\z.jpg"));
 			Property nineteen = new Property("Dr. Z", Color.ORANGE, 200, 100, zRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property twenty = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
 	
 			int[] cosceRent = {100,300,750,925,1100};
 			tempImg = ImageIO.read(new File("Images\\Properties\\cosce.jpg"));
 			Property twentyone = new Property("Mrs. Cosce", Color.RED, 220, 150, cosceRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property twentytwo = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
 	
 			int[] snyderRent = {90,250,700,875,1050};
@@ -115,7 +115,7 @@ public class PropertiesCardStack
 	
 			int[] lgiRent = {25,50,100,200};
 			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
-			Property twentyfive = new Property("Mr. Wuori", Color.WHITE, 0, 50, lgiRent, tempImg);
+			Property twentyfive = new Property("LGI", Color.WHITE, 0, 50, lgiRent, tempImg);
 	
 			int[] dreschRent = {110,330,800,975,1150};
 			tempImg = ImageIO.read(new File("Images\\Properties\\dresch.jpg"));
@@ -132,7 +132,7 @@ public class PropertiesCardStack
 			tempImg = ImageIO.read(new File("Images\\Properties\\light.jpg"));
 			Property twentynine = new Property("Mrs. Light", Color.YELLOW, 280, 150, lightRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property thirty = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
 	
 			int[] kohrRent = {130,390,900,1100,1275};
@@ -143,7 +143,7 @@ public class PropertiesCardStack
 			tempImg = ImageIO.read(new File("Images\\Properties\\schultheis.jpg"));
 			Property thirtytwo = new Property("Mr. Schultheis", Color.GREEN, 300, 200, schultheisRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property thirtythree = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
 	
 			int[] thomasRent = {150,450,1000,1200,1400};
@@ -154,14 +154,14 @@ public class PropertiesCardStack
 			tempImg = ImageIO.read(new File("Images\\Properties\\library.jpg"));
 			Property thirtyfive = new Property("Library", Color.WHITE, 0, 50, libraryRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property thirtysix = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
 	
 			int[] eggertRent = {175,500,1100,1300,1500}; //epic gamer egg
 			tempImg = ImageIO.read(new File("Images\\Properties\\eggert.jpg"));
 			Property thirtyseven = new Property("Mr. Eggert", Color.BLUE.darker(), 350, 200, eggertRent, tempImg);
 	
-			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
+			tempImg = null;
 			Property thirtyeight = new Property("fillerName", Color.WHITE, 100, 0, fillerRent, tempImg);
 	
 			int[] reedRent = {200,600,1400,1700,2000};
