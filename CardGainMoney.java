@@ -10,7 +10,7 @@ public class CardGainMoney extends Card
 		
 		this.amt = amt;
 	}
-
+	
 	@Override
 	public void affect(Player p)
 	{

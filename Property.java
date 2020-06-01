@@ -6,10 +6,11 @@ public class Property
 	private String name;
 	private String color;
 	private int houseCost;
+	private Image image;
 	
 	private int[] rents;
 	
-	public Property(String name, String color, int houseCost, int[] rents)
+	public Property(String name, String color, int houseCost, int[] rents, Image image)
 	{
 		this.name = name;
 		this.color = color;
