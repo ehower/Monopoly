@@ -23,7 +23,7 @@ public class ProcessingDriver extends PApplet
 	
 	public void settings()
 	{
-		fullScreen();
+		size(1366,768);
 	}
 	
 	public void setup()
@@ -55,6 +55,33 @@ public class ProcessingDriver extends PApplet
 				text(typing, width-width/2 + 50, height - height/3);	
 			}	
 			break;
+			
+			case 2:
+			{
+				ellipseMode(CENTER);
+				
+				fill(players.get(0).getColor().getRGB());
+				ellipse(604,626,10,10);
+				
+				fill(players.get(1).getColor().getRGB());
+				ellipse(632,626,10,10);
+				
+				if(players.size() >= 3)
+				{
+				fill(players.get(2).getColor().getRGB());
+				ellipse(604,657,10,10);
+				}
+				
+				if(players.size() == 4)
+				{
+				fill(players.get(3).getColor().getRGB());
+				ellipse(632,657,10,10);
+				}
+			}
+			break;
+			
+			default:
+				System.out.println("If you are seeing this, Ethan did something very wrong.");
 		}
 	}
 	
@@ -113,7 +140,7 @@ public class ProcessingDriver extends PApplet
 			break;
 			
 			default:
-				System.out.println("If you are seeing this, Ethan did something very wrong.");
+				break;
 		}
 	}
 	
