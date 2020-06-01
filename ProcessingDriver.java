@@ -144,6 +144,22 @@ public class ProcessingDriver extends PApplet
 				fill(255);
 				textSize(45);
 				text(Integer.toString(die.getResult()), 730, 200);
+				
+				
+				
+				if(wait)
+				{
+					if(die.getRolledDoubles())
+						wait = false;
+					else
+					{
+						wait = false;
+						if(count == players.size())
+							count = 0;
+						else
+							count++;
+					}
+				}
 			}
 			break;
 			
@@ -220,7 +236,7 @@ public class ProcessingDriver extends PApplet
 			if(mouseY <= 130 && mouseY >= 90)
 			{
 				die.rollDice();
-				players.get(count).setSpace(players.get(count).getSpace() + die.getResult());
+				players.get(count).setSpace((players.get(count).getSpace() + die.getResult()) % 40);
 				int[] coords = getCoordsForPoint(players.get(count).getSpace(), count);
 				fill(players.get(count).getColor().getRGB());
 				ellipse(coords[0],coords[1],10,10);
