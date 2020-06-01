@@ -19,11 +19,11 @@ public class ProcessingDriver extends PApplet
 	
 	public int[] getCoordsForPoint(int index, int playerNo)
 	{
-		int addAmt = 70;
+		int addAmt = index % 10 != 0 ? 20 : 0;
 		
 		int[] coord;
 		
-		final int width = 56;
+		final int width = 55;
 		
 		if(index < 10)
 		{
