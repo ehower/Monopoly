@@ -17,10 +17,9 @@ public class Window
 	}
 	public void WindowSetup()
 	{
-		frame.setVisible(true);
 		frame.setSize(screenSize.width, screenSize.height);
-		frame.setLayout(null);  
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 	}
 	
 	public void playerSetup()
