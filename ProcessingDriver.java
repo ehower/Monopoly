@@ -19,6 +19,13 @@ public class ProcessingDriver extends PApplet
 	
 	Property[] properties;
 	
+	private boolean drawBuyMenu = false;
+	
+	public void setDrawBuyMenu(boolean b)
+	{
+		drawBuyMenu = b;
+	}
+	
 	public int[] getCoordsForPoint(int index, int playerNo)
 	{
 		int addAmt = index % 10 != 0 ? 20 : 0;
@@ -143,8 +150,6 @@ public class ProcessingDriver extends PApplet
 				fill(255);
 				textSize(45);
 				text(Integer.toString(die.getResult()), 730, 200);
-				
-				
 				
 				if(wait)
 				{
