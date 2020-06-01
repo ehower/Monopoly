@@ -20,10 +20,10 @@ public class WingsOfPraiseStack
 		Card img3 = new CardPayMoney(tempImg, 50);
 
 		tempImg = ImageIO.read(new File("Images\\Wings of Praise\\04.jpg"));
-		Card img4 = new CardJail(tempImg, 50);
+		Card img4 = new CardJail(tempImg);
 
 		tempImg = ImageIO.read(new File("Images\\Wings of Praise\\05.jpg"));
-		Card img5 = new CardSetSpace(tempImg, 10);
+		Card img5 = new CardSetSpace(tempImg, 10,false, false);
 
 		tempImg = ImageIO.read(new File("Images\\Wings of Praise\\06.jpg"));
 		Card img6 = new CardGainMoney(/*set*/);
