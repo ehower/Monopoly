@@ -14,6 +14,7 @@ public class ProcessingDriver extends PApplet
 	String playerName = "";
 	int count = 0;
 	boolean winner = false;
+	Die die = new Die();
 	
 	public int[] getCoordsForPoint(int index, int playerNo)
 	{
@@ -138,10 +139,14 @@ public class ProcessingDriver extends PApplet
 				fill(255);
 				textSize(30);
 				text(players.get(0).getName() + ", it is your turn!", (width-width/2 + 50),50);
-				rect(730,125,100,40);
+				rect(730,90,130,40);
 				
 				fill(0);
 				text("Roll Dice",730,120);
+				
+				fill(255);
+				textSize(45);
+				text(Integer.toString(die.getResult()), 730, 200);
 			}
 			break;
 			
@@ -207,6 +212,15 @@ public class ProcessingDriver extends PApplet
 			default:
 				break;
 		}
+	}
+	
+	public void mousePressed()
+	{	
+		if(mouseX <= 850 && mouseX >=730 && state == 2)
+			if(mouseY <= 130 && mouseY >= 90)
+			{
+				die.rollDice();
+			}
 	}
 	
 	public static List<Player> getPlayers()
