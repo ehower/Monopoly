@@ -40,9 +40,9 @@ public class Player
     }
     public void setSpace(int s)
     {
-        setSpace(s, true, true);
+        setSpace(s, true, true, true);
     }
-    public void setSpace(int s, boolean collectMoney, boolean payRent)
+    public void setSpace(int s, boolean collectMoney, boolean payRent, boolean canBuy)
     {
     	if(s < space) // Passed/On Go
     		setMoney(getMoney() + 200);
@@ -50,6 +50,11 @@ public class Player
     	owesSpace = payRent;
     	
     	this.space = s;
+    	
+    	if(canBuy)
+    	{
+    		System.out.println("A BUY MENu HAS TO BE POPPED UP");
+    	}
     }
     public boolean owesSpace()
     {

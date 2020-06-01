@@ -12,6 +12,8 @@ public class Property
 	
 	private int[] rents;
 	
+	public static final int HOTEL = 5; // 5 houses = 1 hotel
+	
 	public Property(String name, String color, int houseCost, int[] rents, Image image)
 	{
 		this.name = name;
