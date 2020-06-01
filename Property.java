@@ -3,7 +3,7 @@ import java.awt.Image;
 
 public class Property
 {
-	private Player owner;
+	private Player owner = null;
 	
 	private int houses = 0;
 	private String name;
