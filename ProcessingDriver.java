@@ -17,6 +17,7 @@ public class ProcessingDriver extends PApplet
 	Die die = new Die();
 	boolean wait = false;
 	boolean doubles = false;
+	CardPile wings;
 
 
 	Property[] properties;
@@ -102,6 +103,8 @@ public class ProcessingDriver extends PApplet
 		boardImage = loadImage("Images\\Board.png");
 
 		properties = PropertiesCardStack.PropertiesStack();
+		
+		wings = WingsOfPraiseStack.WingsStack();
 	}
 
 	public void draw()
@@ -153,7 +156,7 @@ public class ProcessingDriver extends PApplet
 				
 				if(doubles) {text("DOUBLES!", (width-width/2 + 50),300);}
 				
-				if(wait && !drawBuyMenu)
+				if(wait)
 				{
 					if(die.getRolledDoubles())
 					{
@@ -207,7 +210,9 @@ public class ProcessingDriver extends PApplet
 				}
 				else if(players.get(count).getSpace() == 2 || players.get(count).getSpace() == 17 ||players.get(count).getSpace() == 33)
 				{
+					Card temp = wings.takeTop();
 					
+					image(new PImage(temp.getImg()),width - (-450/2 + width/2), height/2,450,270);
 				}
 			}
 			break;
