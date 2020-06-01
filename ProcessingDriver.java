@@ -125,7 +125,6 @@ public class ProcessingDriver extends PApplet
 				for(int i = 0; i < players.size(); i++)
 				{
 					Player player = players.get(i);
-					player.setSpace((player.getSpace() + 1) % 40);
 					int[] coords = getCoordsForPoint(player.getSpace(), i);
 					fill(players.get(i).getColor().getRGB());
 					ellipse(coords[0],coords[1],10,10);
