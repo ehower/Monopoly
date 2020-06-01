@@ -90,6 +90,8 @@ public class Player
     public void setMoney(int m)
     {
         money = m;
+        if(money < 0)
+        	ProcessingDriver.lose(this); // gamer down
     }
     public void addProperty(Property p)
     {

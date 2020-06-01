@@ -36,7 +36,22 @@ public class ProcessingDriver extends PApplet
 	{
 		drawBuyMenu = b;
 	}
-
+	
+	// its perfect
+	public static void lose(Player p)
+	{
+		for(int i = 0; i < players.size(); i++)
+		{
+			if(p.equals(players.get(i)))
+			{
+				players.remove(i);
+				return;
+			}
+		}
+		
+		throw new RuntimeException("gj, you removed a player that didnt exist you baffoun");
+	}
+	
 	public int[] getCoordsForPoint(int index, int playerNo)
 	{
 		int addAmt = index % 10 != 0 ? 20 : 0;
