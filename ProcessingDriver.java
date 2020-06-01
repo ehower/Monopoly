@@ -205,6 +205,7 @@ public class ProcessingDriver extends PApplet
 				fill(255);
 				textSize(30);
 				text(players.get(count).getName() + ", it is your turn!", (width-width/2 + 50),50);
+				text("$" + players.get(count).getMoney(), 20, height - 40);
 				
 				if(players.get(count).getSpace() == 4)
 				{
@@ -299,7 +300,17 @@ public class ProcessingDriver extends PApplet
 					&& !p.equals(properties[p.getSpace()].getOwner()) 
 					&& properties[p.getSpace()].getOwner() != null)
 			{
-				p.setMoney(p.getMoney() - properties[p.getSpace()].getRent());
+				int cost = properties[p.getSpace()].getRent();
+				if(p.getMoney() >= cost)
+				{
+					p.setMoney(p.getMoney() - cost);
+					properties[p.getSpace()].getOwner().setMoney(properties[p.getSpace()].getOwner().getMoney() + cost);
+				}
+				else
+				{
+					properties[p.getSpace()].getOwner().setMoney(properties[p.getSpace()].getOwner().getMoney() + p.getMoney());
+					p.setMoney(-1);
+				}
 				
 				p.setOwesSpace(false);
 			}
