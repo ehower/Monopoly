@@ -13,6 +13,7 @@ public class ProcessingDriver extends PApplet
 	int numPlayers = 0;
 	String playerName = "";
 	int count = 0;
+	boolean winner = false;
 	
 	private static List<Player> players;
 	
@@ -77,6 +78,16 @@ public class ProcessingDriver extends PApplet
 				fill(players.get(3).getColor().getRGB());
 				ellipse(632,657,10,10);
 				}
+				
+				count = 0;
+				
+				fill(255);
+				textSize(30);
+				text(players.get(0).getName() + ", it is your turn!", (width-width/2 + 50),50);
+				rect(730,125,100,40);
+				
+				fill(0);
+				text("Roll Dice",730,120);
 			}
 			break;
 			
