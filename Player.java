@@ -10,6 +10,7 @@ public class Player
     private List<Property> properties = new ArrayList<>();
     private Color color;
     private int jailFreeCards = 0;
+    private boolean inJail = false;
     
     private boolean owesSpace = false;
 
@@ -73,6 +74,14 @@ public class Player
 				ProcessingDriver.setDrawBuyMenu(true);
     		}
     	}
+    }
+    public boolean isInJail()
+    {
+    	return inJail;
+    }
+    public void setJail(boolean inJail)
+    {
+    	this.inJail = inJail;
     }
     public boolean owesSpace()
     {

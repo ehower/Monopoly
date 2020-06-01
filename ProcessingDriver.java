@@ -154,7 +154,7 @@ public class ProcessingDriver extends PApplet
 				if(doubles) {text("DOUBLES!", (width-width/2 + 50),300);}
 				
 				if(wait && !drawBuyMenu)
-				{System.out.println(count + ":" + players.size());
+				{
 					if(die.getRolledDoubles())
 					{
 						doubles = true;

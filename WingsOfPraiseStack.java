@@ -30,7 +30,7 @@ public class WingsOfPraiseStack
 			cards[3] = new CardJail(tempImg);
 	
 			tempImg = ImageIO.read(new File("Images\\Wings of Praise\\05.jpg"));
-			cards[4] = new CardSetSpace(tempImg, 10,false, false);
+			cards[4] = new CardGotoJail(tempImg);
 			
 			tempImg = ImageIO.read(new File("Images\\Wings of Praise\\06.jpg"));
 			cards[5] = new Card(tempImg)

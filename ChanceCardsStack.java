@@ -11,7 +11,7 @@ public class ChanceCardsStack
 		Card[] cards = new Card[14];
 		
 		cards[0] = new CardPayMoney(img("Images/Chance/01.jpg"), 30);
-		cards[1] = new CardSetSpace(img("Images/Chance/02.jpg"), 10, false, false);
+		cards[1] = new CardGotoJail(img("Images/Chance/02.jpg"));
 		cards[2] = new Card(img("Images/Chance/03.jpg"))
 		{
 			@Override
@@ -54,7 +54,7 @@ public class ChanceCardsStack
 				}
 			}
 		};
-		cards[6] = new CardSetSpace(img("Images/Chance/07.jpg"), 10, false, false);
+		cards[6] = new CardGotoJail(img("Images/Chance/07.jpg"));
 		cards[7] = new Card(img("Images/Chance/08.jpg"))
 		{
 			@Override
