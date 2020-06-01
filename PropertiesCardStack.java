@@ -41,7 +41,7 @@ public class PropertiesCardStack
 	
 			int[] auditoriumRent = {25,50,100,200};
 			tempImg = ImageIO.read(new File("Images\\Properties\\auditorium.jpg"));
-			Property five = new Property("Auditorium", Color.WHITE, 0, 25, auditoriumRent, tempImg);
+			Property five = new Property("Auditorium", Color.WHITE, 200, 25, auditoriumRent, tempImg);
 	
 			int[] frauRent = {30,90,270,400,550};
 			tempImg = ImageIO.read(new File("Images\\Properties\\marini.jpg"));
@@ -78,7 +78,7 @@ public class PropertiesCardStack
 	
 			int[] bandroomRent = {25,50,100,200};
 			tempImg = ImageIO.read(new File("Images\\Properties\\bandroom.jpg"));
-			Property fifteen = new Property("Band Room", Color.WHITE, 0, 50, bandroomRent, tempImg);
+			Property fifteen = new Property("Band Room", Color.WHITE, 200, 50, bandroomRent, tempImg);
 	
 			int[] risserRent = {80,220,600,800,1000};
 			tempImg = ImageIO.read(new File("Images\\Properties\\risser.jpg"));
@@ -115,7 +115,7 @@ public class PropertiesCardStack
 	
 			int[] lgiRent = {25,50,100,200};
 			tempImg = ImageIO.read(new File("Images\\Properties\\lgi.jpg"));
-			Property twentyfive = new Property("LGI", Color.WHITE, 0, 50, lgiRent, tempImg);
+			Property twentyfive = new Property("LGI", Color.WHITE, 200, 50, lgiRent, tempImg);
 	
 			int[] dreschRent = {110,330,800,975,1150};
 			tempImg = ImageIO.read(new File("Images\\Properties\\dresch.jpg"));
@@ -152,7 +152,7 @@ public class PropertiesCardStack
 	
 			int[] libraryRent = {25,50,100,200};
 			tempImg = ImageIO.read(new File("Images\\Properties\\library.jpg"));
-			Property thirtyfive = new Property("Library", Color.WHITE, 0, 50, libraryRent, tempImg);
+			Property thirtyfive = new Property("Library", Color.WHITE, 200, 50, libraryRent, tempImg);
 	
 			tempImg = null;
 			Property thirtysix = new Property("fillerName", Color.WHITE, 0, 0, fillerRent, tempImg);
