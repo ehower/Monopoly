@@ -181,14 +181,12 @@ public class ProcessingDriver extends PApplet
 					{
 						text("10% of your wealth has been taken",(width-width/2 + 50), 100);
 						players.get(count).setMoney(players.get(count).getMoney() -(int)(players.get(count).getMoney()*.1));
-						delay(5000);
 					}
 					
 					else
 					{
 						text("You have paid $200", (width-width/2 + 50),100);
 						players.get(count).setMoney(players.get(count).getMoney() -200);
-						delay(5000);
 					}
 				}
 				
